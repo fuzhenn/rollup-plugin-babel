@@ -27,7 +27,6 @@
     "prepublish": "npm run lint && npm test",
     "pretest": "npm run build",
     "build": "rollup -c",
-    "prebuild": "rm -rf dist/*",
     "lint": "eslint src"
   },
   "dependencies": {
