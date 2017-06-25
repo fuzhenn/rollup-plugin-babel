@@ -1,5 +1,5 @@
 {
-  "name": "rollup-plugin-babel",
+  "name": "maptalks-rollup-plugin-babel",
   "version": "2.7.1",
   "description": "Seamless integration between Rollup and Babel.",
   "main": "dist/rollup-plugin-babel.cjs.js",
