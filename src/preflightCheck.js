@@ -1,8 +1,7 @@
 import { join } from 'path';
-import assign from 'object-assign';
 import { transform } from 'babel-core';
 import { INLINE, RUNTIME, BUNDLED } from './constants.js';
-import classes from 'babel-plugin-transform-es2015-classes';
+import importHelperPlugin from './helperPlugin.js';
 
 let preflightCheckResults = {};
 
@@ -10,13 +9,13 @@ export default function preflightCheck ( options, dir ) {
 	if ( !preflightCheckResults[ dir ] ) {
 		let helpers;
 
-		options = assign( {}, options );
+		options = Object.assign( {}, options );
 		delete options.only;
 		delete options.ignore;
 
 		options.filename = join( dir, 'x.js' );
 
-		options.plugins = options.plugins ? options.plugins.concat( classes ) : [ classes ];
+		options.plugins = options.plugins ? options.plugins.concat( importHelperPlugin ) : [ importHelperPlugin ];
 
 		const check = transform( 'export default class Foo {}', options ).code;
 
